@@ -5,8 +5,7 @@ services:
     container_name: node-app-container
     build: 
         context: .
-        args:
-          - APP_ENV=development
+        target: development
     volumes:
       - ./src:/app/src:ro   
     ports:

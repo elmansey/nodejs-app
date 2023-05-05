@@ -5,8 +5,7 @@ services:
     container_name: node-app-container
     build: 
       context: .
-      args:
-        - APP_ENV=production
+      target: production
     ports:
       - "4000:4000"
     environment:
