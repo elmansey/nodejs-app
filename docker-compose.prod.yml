@@ -1,13 +1,9 @@
-#version to docker-compose 
 version: "3"
 services:
   the-node-app:
-    container_name: node-app-container
     build: 
       context: .
       target: production
-    ports:
-      - "4000:4000"
     environment:
       - PORT=4000
       - NODE_ENV=production
