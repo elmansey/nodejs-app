@@ -1,0 +1,17 @@
+#version to docker-compose 
+version: "3"
+services:
+  the-node-app:
+    container_name: node-app-container
+    build: 
+        context: .
+        args:
+          - APP_ENV=development
+    volumes:
+      - ./src:/app/src:ro   
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - APP_ENV=development
+    command: npm run start-dev  
