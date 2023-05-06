@@ -1,6 +1,7 @@
 version: "3"
 services:
-  the-node-app:
+
+  node-app:
     container_name: node-app-container
     ports:
        - "4000:4000"
@@ -8,6 +9,7 @@ services:
       - ./.env
     depends_on:
       - mongo
+      - redis
 
 
   mongo:
@@ -18,8 +20,9 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456789
-  # mongo express app to show the database data act as database client 
 
+
+  # mongo express app to show the database data act as database client 
   mongo-express:
     image: mongo-express
     restart: always
@@ -37,6 +40,17 @@ services:
     image: redis
     depends_on:
       - mongo
+
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+    - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - node-app
+
 
 
 volumes:

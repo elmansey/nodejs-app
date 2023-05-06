@@ -1,6 +1,6 @@
 version: "3"
 services:
-  the-node-app:
+  node-app:
     build: 
         context: .
         target: development
