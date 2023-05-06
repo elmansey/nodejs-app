@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const redis = require('redis');
-
+const os = require('os');
 
 // init app 
 const PORT = process.env.PORT  || 4000;
@@ -34,6 +34,8 @@ mongoose.connect(URI)
   .then(() => console.log('Connected to MongoDB successfully'))
   .catch(err => console.log(err));
 // route 
-app.get('/',(req,res) => res.send("Hello Iam A cloud and Devops Engineer  ") );
+app.get('/',(req,res) => {
+  res.send(`hello the machine is  ${os.hostname}`)
+} );
 
 app.listen(PORT,() => console.log(`app is up and running on port : ${PORT}`));
