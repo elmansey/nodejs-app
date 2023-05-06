@@ -1,5 +1,7 @@
 version: "3"
 services:
+
+
   the-node-app:
     container_name: node-app-container
     ports:
@@ -37,6 +39,13 @@ services:
     image: redis
     depends_on:
       - mongo
+
+
+  nginx:
+    image: nginx:stable-alpine
+    ports:
+    - "8080:80"
+
 
 
 volumes:
